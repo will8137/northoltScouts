@@ -27,7 +27,7 @@ gulp.task('default', function(callback) {
                 'public/**/*.hbs', 
                 '!public/templates/templates.js', 
                 '!public/plugins/plugins.js', 
-                '!public/build/mediaPlayer.js',
+                '!public/build/willbatross.js',
                 '!public/courses/**/*'
             ], ["wepback:build"]);
             gulp.watch([
@@ -89,14 +89,14 @@ function lessBuild(isProduction, callback) {
         gulp.src(['public/theme/less/main.less', '!public/courses/**/*.less'])
             .pipe(less())
             .pipe(cssmin())
-            .pipe(rename("mediaPlayer.css"))
+            .pipe(rename("app.css"))
             .pipe(gulp.dest('./public/css'));
 
     } else {
         gulp.src(['public/theme/less/main.less', '!public/courses/**/*.less'])
             .pipe(sourcemaps.init())
             .pipe(less())
-            .pipe(rename("mediaPlayer.css"))
+            .pipe(rename("app.css"))
             .pipe(sourcemaps.write('./maps'))
             .pipe(gulp.dest('./public/css'));
     }

@@ -7,7 +7,7 @@ module.exports = {
     },
     output: {
         path: './public/',
-        filename: "build/mediaPlayer.js"
+        filename: "build/app.js"
     },
     module: {
         loaders: [{
@@ -35,7 +35,7 @@ module.exports = {
             jQueryUI: 'core/js/libraries/jquery-ui',
             underscore: 'core/js/libraries/underscore',
             backbone: 'core/js/libraries/backbone',
-            blossom: 'core/js/blossom.js',
+            app: 'core/js/app.js',
             helpers: 'core/js/helpers',
             router: 'core/js/router',
             sockets: 'core/js/sockets',
@@ -54,6 +54,7 @@ module.exports = {
         new webpack.ProvidePlugin({
                 $: 'jquery',
                 jQuery: 'jquery',
+                "window.jQuery": "jquery",
                 _: 'underscore',
                 Backbone: 'backbone'
         }) 

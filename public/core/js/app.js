@@ -1,1 +1,5 @@
-console.log("Hello world")
+$(function(){
+    var Navigation = require('modules/sideNav/sideNavController');
+    
+    new Navigation();
+});

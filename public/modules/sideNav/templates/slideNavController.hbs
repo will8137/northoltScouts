@@ -1,0 +1,141 @@
+<div class="drawer-inner">
+    <div class="drawer-scroll">
+    
+        <div class="drawer-profile">
+            <div class="drawer-profile-inner">
+
+                <div class="drawer-profile-edit">
+                    <a href="#/users/{{getCurrentUserId}}/edit"><i class="icon icon-pencil4"></i>{{lp "drawer.drawerProfileEdit"}}</a>
+                </div>
+
+                <div class="drawer-profile-avatar">
+                    {{#if _avatarThumbnail}}
+                    <img src="{{_avatarThumbnail}}" />
+                    {{else}}
+                    <img src="css/images/avatar-drawer.png"/>
+                    {{/if}}
+                </div>
+
+                <div class="drawer-profile-user">
+                    {{firstName}} {{lastName}}
+                </div>
+
+                <div class="list-item-detail">
+                    <i class="icon icon-users2"></i><span> {{_groups.length}} {{#ifNumberEquals _groups.length 1}}{{lp "drawer.drawerGroupDetail"}}{{else}}{{lp "drawer.drawerGroupsDetail"}}{{/ifNumberEquals}}</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="drawer-item drawer-dashboard">
+            <a href="#/dashboard" class="selected drawer-item-title">
+                <span><i class="icon icon-speed-fast"></i>{{lp "drawer.drawerItemDashboard"}}</span>
+            </a>
+        </div>
+
+        {{#ifUserHasPermissions "_canCreateUser,_canReadUser"}}
+    	<div class="drawer-item drawer-users">
+            {{#ifUserPermission "_canReadUser"}}
+    		<a href="#/users" class="drawer-item-title">
+                <span><i class="icon icon-woman"></i>{{lp "drawer.drawerItemUsers"}}</span>
+    		</a>
+            {{/ifUserPermission}}
+            {{#ifUserPermission "_canCreateUser"}}
+        	<a href="#/users/add" class="drawer-item-add"><i class="icon icon-plus-circle"></i></a>
+            {{/ifUserPermission}}
+        </div>
+        {{/ifUserHasPermissions}}
+
+        {{#ifUserHasPermissions "_canCreateGroup,_canReadGroup,_canUpdateUser"}}
+        <div class="drawer-item drawer-groups">
+            {{#ifUserPermission "_canReadGroup"}}
+       		<a href="#/groups" class="drawer-item-title">
+    			<span><i class="icon icon-users2"></i>{{lp "drawer.drawerItemGroups"}}</span>
+    		</a>
+            {{/ifUserPermission}}
+            {{#ifUserPermission "_canCreateGroup"}}
+        	<a href="#/groups/add" class="drawer-item-add"><i class="icon icon-plus-circle"></i></a>
+            {{/ifUserPermission}}
+        </div>
+
+        {{else}}
+
+        {{#ifUserHasPermissions "_canReadOwnGroup"}}
+        <div class="drawer-item drawer-groups">
+            <a href="#/groups" class="drawer-item-title">
+                <span><i class="icon icon-users2"></i>{{lp "drawer.drawerItemMyGroups"}}</span>
+            </a>
+        </div>
+        {{/ifUserHasPermissions}}
+
+        {{/ifUserHasPermissions}}
+
+
+        {{#ifUserHasPermissions "_canCreateSubject,_canReadSubject,_canUpdateUser"}}
+        <div class="drawer-item drawer-subjects">
+            {{#ifUserPermission "_canReadSubject"}}
+            <a href="#/subjects" class="drawer-item-title">
+                <span><i class="icon icon-contacts"></i>{{lp "drawer.drawerItemSubjects"}}</span>
+            </a>
+            {{/ifUserPermission}}
+            {{#ifUserPermission "_canCreateSubject"}}
+            <a href="#/subjects/add" class="drawer-item-add"><i class="icon icon-plus-circle"></i></a>
+            {{/ifUserPermission}}
+        </div>
+
+        {{else}}
+
+        {{#ifUserHasPermissions "_canReadOwnSubject"}}
+        <div class="drawer-item drawer-subjects">
+            <a href="#/subjects" class="drawer-item-title">
+                <span><i class="icon icon-contacts"></i>{{lp "drawer.drawerItemMySubjects"}}</span>
+            </a>
+        </div>
+        {{/ifUserHasPermissions}}
+
+        {{/ifUserHasPermissions}}
+
+        {{#ifUserHasPermissions "_canCreateCourse,_canReadCourse,_canUpdateUser"}}
+        <div class="drawer-item drawer-courses">
+            {{#ifUserPermission "_canReadCourse"}}
+            <a href="#/courses" class="drawer-item-title">
+                <span><i class="icon icon-book"></i>{{lp "drawer.drawerItemCourses"}}</span>
+            </a>
+            {{/ifUserPermission}}
+            {{#ifUserPermission "_canCreateCourse"}}
+            <a href="#/courses/add" class="drawer-item-add"><i class="icon icon-plus-circle"></i></a>
+            {{/ifUserPermission}}        
+        </div>
+
+        {{else}}
+
+        {{#ifUserHasPermissions "_canReadOwnCourse"}}
+        <div class="drawer-item drawer-courses">
+            <a href="#/courses" class="drawer-item-title">
+                <span><i class="icon icon-book"></i>{{lp "drawer.drawerItemMyCourses"}}</span>
+            </a>
+        </div>
+        {{/ifUserHasPermissions}}
+
+        {{/ifUserHasPermissions}}
+
+        {{#ifUserHasPermissions "_canCreateAchievement"}}
+        <div class="drawer-item drawer-achievements">
+            {{#ifUserPermission "_canReadAchievement"}}
+            <a href="#/achievements" class="drawer-item-title">
+                <span><i class="icon icon-trophy2"></i>{{lp "drawer.drawerItemAchievements"}}</span>
+            </a>
+            {{/ifUserPermission}}
+            {{#ifUserPermission "_canCreateAchievement"}}
+            <a href="#/achievements/add" class="drawer-item-add"><i class="icon icon-plus-circle"></i></a>
+            {{/ifUserPermission}}        
+        </div>
+        {{/ifUserHasPermissions}}
+
+        <div class="drawer-item drawer-settings">
+            <a href="#/logout" class="drawer-item-title">
+                <span><i class="icon icon-power-switch"></i>{{lp "drawer.drawerItemLogout"}}</span>
+            </a>
+        </div>
+
+    </div>
+</div>

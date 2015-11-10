@@ -1,3 +1,5 @@
 {
-	"serverPort": "8137"
+    "clientName": "Willbatross",
+	"serverPort": "8137",
+    "clientVersion" : "0.0.1 - pre aplha"
 }

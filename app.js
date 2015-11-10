@@ -32,7 +32,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, '/app/views'));
 app.set('view engine', 'jade');
-app.set('port', config.serverPort || 8153);
+app.set('port', config.serverPort || 8137);
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -58,7 +58,7 @@ app.use(function (req, res, next) {
 //app.use(compression());
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -68,15 +68,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 var router = express.Router();
 
 app.get("/", function(req, res){ 
-      res.render("index");
+    res.render("index");
 });
 
 //Routes
 var index = require('./lib/routes/index');
-var users = require('./lib/routes/users');
 
 app.use(index);
-app.use(users);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
